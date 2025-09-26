@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                primary: "#3B82F6",
+                "background-light": "#F0F4F8",
+                "background-dark": "#0B1120",
+                "surface-light": "#FFFFFF",
+                "surface-dark": "#111827",
+                "surface-dark-lighter": "#1E293B",
+                "text-light": "#1F2937",
+                "text-dark": "#F9FAFB",
+                "subtle-light": "#6B7280",
+                "subtle-dark": "#9CA3AF"
+              },
+              fontFamily: {
+                display: ["Sora", "sans-serif"],
+              },
+              borderRadius: {
+                DEFAULT: "0.5rem",
+                'lg': '1rem',
+                'xl': '1.5rem',
+              },
+            },
+          },
+        };
+    </script>
+<style>
+        .glow-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vh;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, rgba(11, 17, 32, 0) 60%);
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
+        }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1em;
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-text-dark transition-colors duration-300">
+<div class="min-h-screen flex flex-col">
+<header class="p-4 sm:p-6">
+<nav class="container mx-auto flex justify-between items-center">
+<div class="flex items-center space-x-8">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined h-8 w-8 text-primary text-3xl">
+                        hardware
+                    </span>
+<span class="text-xl font-bold">The Builder</span>
+</div>
+<div class="hidden md:flex items-center space-x-6">
+<a class="text-subtle-dark hover:text-text-dark transition-colors" href="#">Community</a>
+<a class="text-subtle-dark hover:text-text-dark transition-colors" href="#">Enterprise</a>
+<a class="flex items-center text-subtle-dark hover:text-text-dark transition-colors" href="#">
+                        Resources <span class="material-icons text-lg">expand_more</span>
+</a>
+<a class="text-subtle-dark hover:text-text-dark transition-colors" href="#">Careers</a>
+<a class="text-subtle-dark hover:text-text-dark transition-colors" href="#">Pricing</a>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<a class="text-subtle-dark hover:text-text-dark transition-colors" href="#"><span class="material-icons">hub</span></a>
+<a class="text-subtle-dark hover:text-text-dark transition-colors" href="#"><span class="material-icons">code</span></a>
+<a class="text-subtle-dark hover:text-text-dark transition-colors" href="#">Sign in</a>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all">Get started</button>
+</div>
+</nav>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
+<div class="glow-background"></div>
+<div class="relative z-10 w-full max-w-5xl">
+<h1 class="text-4xl md:text-6xl font-bold text-text-dark leading-tight">What should we build today?</h1>
+<p class="mt-4 text-lg md:text-xl text-subtle-dark max-w-2xl mx-auto">Create stunning apps &amp; websites by chatting with AI.</p>
+<div class="mt-12 w-full mx-auto">
+<div class="relative">
+<textarea class="w-full bg-surface-dark/50 backdrop-blur-sm text-text-dark placeholder-subtle-dark border border-gray-700/50 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary resize-none text-lg p-6 pb-20 pr-20" placeholder="Type your idea and we'll build it together." rows="8"></textarea>
+<div class="absolute bottom-4 left-4 flex items-center space-x-4">
+<div class="flex items-center space-x-2">
+<label class="text-sm text-subtle-dark" for="provider">Provider:</label>
+<select class="bg-surface-dark-lighter/50 border border-gray-600/50 rounded-md px-3 py-1 text-sm text-text-dark focus:ring-1 focus:ring-primary" id="provider" name="provider">
+<option>OpenAI</option>
+<option>Google</option>
+<option>Anthropic</option>
+</select>
+</div>
+<div class="flex items-center space-x-2">
+<label class="text-sm text-subtle-dark" for="model">Model:</label>
+<select class="bg-surface-dark-lighter/50 border border-gray-600/50 rounded-md px-3 py-1 text-sm text-text-dark focus:ring-1 focus:ring-primary" id="model" name="model">
+<option>GPT-4</option>
+<option>Gemini Pro</option>
+<option>Claude 3</option>
+</select>
+</div>
+</div>
+<button class="absolute right-4 top-4 h-12 w-12 flex items-center justify-center bg-primary text-white rounded-lg hover:bg-opacity-90 transition-all shadow-[0_0_20px_theme(colors.primary/50%)]">
+<span class="material-icons">arrow_upward</span>
+</button>
+</div>
+</div>
+<div class="mt-8 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 text-subtle-dark">
+<div class="flex items-center space-x-2 p-2 bg-surface-dark/30 backdrop-blur-sm border border-gray-700/30 rounded-full">
+<button class="px-4 py-1 rounded-full text-sm font-medium bg-primary/20 text-primary border border-primary/30">Prompt</button>
+<button class="px-4 py-1 rounded-full text-sm font-medium text-subtle-dark hover:bg-gray-700/50">Image</button>
+<button class="px-4 py-1 rounded-full text-sm font-medium text-subtle-dark hover:bg-gray-700/50">Video</button>
+</div>
+<div class="flex items-center space-x-4">
+<button class="flex items-center space-x-2 text-subtle-dark hover:text-text-dark transition-colors">
+<span class="material-icons text-xl">add</span>
+<span>Attach files</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
