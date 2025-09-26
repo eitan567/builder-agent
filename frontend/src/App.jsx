@@ -131,7 +131,7 @@ function App() {
                 <label className="text-subtle-light dark:text-subtle-dark" htmlFor="model-select">Model:</label>
                 <div className="relative">
                   <select 
-                    className="pl-10 pr-4 py-2 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-primary text-text-light dark:text-text-dark" 
+                    className="pl-10 pr-4 py-2 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-primary text-text-light dark:text-text-dark max-w-[400px]"
                     id="model-select"
                     value={model}
                     onChange={(e) => setModel(e.target.value)}
