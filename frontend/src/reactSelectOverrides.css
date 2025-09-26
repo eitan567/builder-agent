@@ -1,32 +1,37 @@
 /* Custom react-select overrides for Tailwind design */
 .react-select__control {
-  @apply pl-10 pr-4 py-2 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-primary text-text-light dark:text-text-dark;
-  min-height: 40px;
+  @apply pl-8 pr-3 py-1.5 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-primary text-text-light dark:text-text-dark;
+  min-height: 32px;
   box-shadow: none;
   border-width: 1px;
   border-radius: 12px !important;
   text-align: left;
   display: flex;
   align-items: center;
+  font-size: 0.75rem;
 }
 .react-select__control--is-focused {
   @apply ring-2 ring-primary;
 }
 .react-select__menu {
   @apply bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark;
-  max-height: 200px;
+  max-height: 160px;
   border-radius: 12px !important;
   border-width: 1px;
   border-color: #e5e7eb;
+  font-size: 0.75rem;
 }
 .react-select__menu-list {
   border-radius: 12px !important;
   text-align: left;
+  font-size: 0.75rem;
+  overflow-x: hidden;
 }
 .react-select__option {
   @apply text-text-light dark:text-text-dark;
   text-align: left;
-  padding-left: 2rem !important; /* match pl-10 for icon space */
+  padding-left: 1rem !important; /* match pl-8 for icon space */
+  font-size: 0.75rem;
 }
 .react-select__option--is-focused {
   @apply bg-gray-100 dark:bg-gray-800;
@@ -37,9 +42,10 @@
 .react-select__single-value {
   @apply text-text-light dark:text-text-dark;
   text-align: left;
-  padding-left: 2rem !important; /* match pl-10 for icon space */
+  padding-left: 1rem !important; /* match pl-8 for icon space */
   display: flex;
   align-items: center;
+  font-size: 0.75rem;
 }
 .react-select__indicator-separator {
   display: none !important;
