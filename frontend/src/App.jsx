@@ -54,21 +54,31 @@ function App() {
   async function runAgent() {
     setLoading(true);
     setPreviewUrl(null);
-    const res = await fetch("http://localhost:5000/api/run-agent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ goal, model, provider })
-    });
-    const data = await res.json();
-    setOutput(data);
+    try {
+      const res = await fetch("http://localhost:5000/api/run-agent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ goal, model, provider })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setOutput({ error: data.message || 'An error occurred' });
+        setLoading(false);
+        return;
+      }
+      setOutput(data);
 
-    const hasIndex = data.context.find(
-      (f) => f.input?.filename === "index.html"
-    );
-    if (hasIndex) {
-      setPreviewUrl("http://localhost:5000/generated/index.html");
+      if (data.context && Array.isArray(data.context)) {
+        const hasIndex = data.context.find(
+          (f) => f.input?.filename === "index.html"
+        );
+        if (hasIndex) {
+          setPreviewUrl("http://localhost:5000/generated/index.html");
+        }
+      }
+    } catch (error) {
+      setOutput({ error: 'Network error' });
     }
-
     setLoading(false);
   }
 
@@ -192,8 +202,14 @@ function App() {
           {output && (
             <div className="mt-4 w-full max-w-2xl mx-auto">
               <div className="bg-surface-light dark:bg-surface-dark p-3 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h2 className="text-lg font-bold text-text-light dark:text-text-dark mb-2 text-center">Generated Project</h2>
-                <FileViewer files={output.context} />
+                <h2 className="text-lg font-bold text-text-light dark:text-text-dark mb-2 text-center">
+                  {output.error ? 'Error' : 'Generated Project'}
+                </h2>
+                {output.error ? (
+                  <p className="text-red-500">{output.error}</p>
+                ) : (
+                  <FileViewer files={output.context} />
+                )}
               </div>
             </div>
           )}

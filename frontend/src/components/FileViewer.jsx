@@ -1,4 +1,5 @@
 function FileViewer({ files }) {
+  if (!files || !Array.isArray(files)) return null;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
       {files.map((f, idx) => (
