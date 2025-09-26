@@ -66,10 +66,10 @@ function App() {
         setLoading(false);
         return;
       }
-      setOutput(data);
+      setOutput(data.result);
 
-      if (data.context && Array.isArray(data.context)) {
-        const hasIndex = data.context.find(
+      if (data.result?.context && Array.isArray(data.result.context)) {
+        const hasIndex = data.result.context.find(
           (f) => f.input?.filename === "index.html"
         );
         if (hasIndex) {

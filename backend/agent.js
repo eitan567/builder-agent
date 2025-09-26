@@ -31,6 +31,10 @@ export async function callLLM(messages, tools, model, provider = "openrouter") {
     headers,
     body
   });
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.error?.message || `API error: ${res.status}`);
+  }
   return await res.json();
 }
 
