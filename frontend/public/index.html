@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Bolt.new</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3B82F6",
+              "background-light": "#F0F4F8",
+              "background-dark": "#0B1120",
+              "surface-light": "#FFFFFF",
+              "surface-dark": "#111827",
+              "text-light": "#1F2937",
+              "text-dark": "#F9FAFB",
+              "subtle-light": "#6B7280",
+              "subtle-dark": "#9CA3AF"
+            },
+            fontFamily: {
+              display: ["Sora", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              'lg': '1rem',
+              'xl': '1.5rem',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .gradient-background {
+        background: radial-gradient(circle at 50% 100%, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0) 40%);
+      }
+      .dark .gradient-background {
+        background: radial-gradient(circle at 50% 100%, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0) 40%);
+      }
+      .arc-background {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 200px;
+        overflow: hidden;
+      }
+      .arc {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200vw;
+        height: 200vw;
+        border-radius: 50%;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script src="%PUBLIC_URL%/static/js/bundle.js"></script>
+  </body>
+</html>
