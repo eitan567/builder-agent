@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import FileViewer from "./components/FileViewer";
 import Preview from "./components/Preview";
+import Select from "react-select";
+
+import "./reactSelectOverrides.css";
 
 function App() {
   const [goal, setGoal] = useState("");
@@ -115,41 +118,51 @@ function App() {
               <div className="flex items-center space-x-2">
                 <label className="text-subtle-light dark:text-subtle-dark" htmlFor="provider-select">Provider:</label>
                 <div className="relative">
-                  <select 
-                    className="pl-10 pr-4 py-2 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-primary text-text-light dark:text-text-dark" 
-                    id="provider-select"
-                    value={provider}
-                    onChange={(e) => setProvider(e.target.value)}
-                  >
-                    <option value="openrouter">OpenRouter</option>
-                    <option value="kilocode">Kilo Code</option>
-                  </select>
-                  <span className="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-subtle-light dark:text-subtle-dark">dns</span>
+                  <div className="w-[200px]">
+                    <Select
+                      id="provider-select"
+                      isDisabled={false}
+                      options={[
+                        { value: "openrouter", label: "OpenRouter" },
+                        { value: "kilocode", label: "Kilo Code" }
+                      ]}
+                      value={{ value: provider, label: provider === "openrouter" ? "OpenRouter" : "Kilo Code" }}
+                      onChange={(option) => setProvider(option ? option.value : "")}
+                      placeholder="Select provider..."
+                      menuPlacement="auto"
+                      menuPosition="fixed"
+                      maxMenuHeight={5 * 40}
+                      classNamePrefix="react-select"
+                      isSearchable={false}
+                      styles={undefined}
+                      theme={undefined}
+                    />
+                    <span className="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-subtle-light dark:text-subtle-dark">dns</span>
+                  </div>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
                 <label className="text-subtle-light dark:text-subtle-dark" htmlFor="model-select">Model:</label>
                 <div className="relative">
-                  <select 
-                    className="pl-10 pr-4 py-2 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-primary text-text-light dark:text-text-dark max-w-[400px]"
-                    id="model-select"
-                    value={model}
-                    onChange={(e) => setModel(e.target.value)}
-                    disabled={modelsLoading || availableModels.length === 0}
-                  >
-                    {modelsLoading ? (
-                      <option>Loading free models...</option>
-                    ) : availableModels.length === 0 ? (
-                      <option>No free models available</option>
-                    ) : (
-                      availableModels.map((modelId) => (
-                        <option key={modelId} value={modelId}>
-                          {modelId}
-                        </option>
-                      ))
-                    )}
-                  </select>
-                  <span className="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-subtle-light dark:text-subtle-dark">memory</span>
+                  <div className="w-[300px]">
+                    <Select
+                      id="model-select"
+                      isDisabled={modelsLoading || availableModels.length === 0}
+                      isLoading={modelsLoading}
+                      options={availableModels.map((modelId) => ({ value: modelId, label: modelId }))}
+                      value={model ? { value: model, label: model } : null}
+                      onChange={(option) => setModel(option ? option.value : "")}
+                      placeholder={modelsLoading ? "Loading free models..." : availableModels.length === 0 ? "No free models available" : "Select model..."}
+                      menuPlacement="auto"
+                      menuPosition="fixed"
+                      maxMenuHeight={5 * 40}
+                      classNamePrefix="react-select"
+                      isSearchable={false}
+                      styles={undefined}
+                      theme={undefined}
+                    />
+                    <span className="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-subtle-light dark:text-subtle-dark">memory</span>
+                  </div>
                 </div>
               </div>
             </div>
