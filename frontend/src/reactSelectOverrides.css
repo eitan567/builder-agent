@@ -1,37 +1,37 @@
 /* Custom react-select overrides for Tailwind design */
 .react-select__control {
-  @apply pl-8 pr-3 py-1.5 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-primary text-text-light dark:text-text-dark;
-  min-height: 32px;
+  @apply pl-6 pr-2 py-1 bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 appearance-none focus:outline-none focus:ring-2 focus:ring-primary text-text-light dark:text-text-dark;
+  min-height: 28px;
   box-shadow: none;
   border-width: 1px;
-  border-radius: 12px !important;
+  border-radius: 8px !important;
   text-align: left;
   display: flex;
   align-items: center;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 }
 .react-select__control--is-focused {
   @apply ring-2 ring-primary;
 }
 .react-select__menu {
   @apply bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark;
-  max-height: 160px;
-  border-radius: 12px !important;
+  max-height: 140px;
+  border-radius: 8px !important;
   border-width: 1px;
   border-color: #e5e7eb;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 }
 .react-select__menu-list {
-  border-radius: 12px !important;
+  border-radius: 8px !important;
   text-align: left;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   overflow-x: hidden;
 }
 .react-select__option {
   @apply text-text-light dark:text-text-dark;
   text-align: left;
-  padding-left: 1rem !important; /* match pl-8 for icon space */
-  font-size: 0.75rem;
+  padding-left: 0.75rem !important; /* match pl-6 for icon space */
+  font-size: 0.7rem;
 }
 .react-select__option--is-focused {
   @apply bg-gray-100 dark:bg-gray-800;
@@ -42,10 +42,10 @@
 .react-select__single-value {
   @apply text-text-light dark:text-text-dark;
   text-align: left;
-  padding-left: 1rem !important; /* match pl-8 for icon space */
+  padding-left: 0.75rem !important; /* match pl-6 for icon space */
   display: flex;
   align-items: center;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 }
 .react-select__indicator-separator {
   display: none !important;
